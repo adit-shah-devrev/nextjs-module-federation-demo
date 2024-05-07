@@ -5,11 +5,13 @@
   "scripts": {},
   "private": true,
   "dependencies": {
+    "@module-federation/nextjs-mf": "^8.3.12",
     "@nrwl/next": "15.9.7",
     "next": "13.1.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "tslib": "^2.3.0"
+    "tslib": "^2.3.0",
+    "react-query": "^3.33.0"
   },
   "devDependencies": {
     "@babel/preset-react": "^7.14.5",

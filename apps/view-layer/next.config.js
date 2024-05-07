@@ -8,7 +8,6 @@ const getRemotes = (isServer) => {
   const location = isServer ? 'ssr' : 'chunks';
 
   return {
-    'view-layer': `view-layer@http://localhost:4201/_next/static/${location}/remoteEntry.js`,
     'data-layer': `data-layer@http://localhost:4202/_next/static/${location}/remoteEntry.js`,
   };
 };
@@ -25,9 +24,11 @@ const nextConfig = {
   webpack: (config, options) => {
     config.plugins.push(
       new NextFederationPlugin({
-        name: 'shell',
+        name: 'view-layer',
         filename: 'static/chunks/remoteEntry.js',
-        exposes: {},
+        exposes: {
+          './names': './components/names',
+        },
         extraOptions: {},
         remotes: getRemotes(options.isServer),
         shared: {

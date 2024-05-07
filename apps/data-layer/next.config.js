@@ -4,15 +4,6 @@
 const { withNx } = require('@nrwl/next/plugins/with-nx');
 const { NextFederationPlugin } = require('@module-federation/nextjs-mf');
 
-const getRemotes = (isServer) => {
-  const location = isServer ? 'ssr' : 'chunks';
-
-  return {
-    'view-layer': `view-layer@http://localhost:4201/_next/static/${location}/remoteEntry.js`,
-    'data-layer': `data-layer@http://localhost:4202/_next/static/${location}/remoteEntry.js`,
-  };
-};
-
 /**
  * @type {import('@nrwl/next/plugins/with-nx').WithNxOptions}
  **/
@@ -22,14 +13,17 @@ const nextConfig = {
     // See: https://github.com/gregberge/svgr
     svgr: false,
   },
+
   webpack: (config, options) => {
     config.plugins.push(
       new NextFederationPlugin({
-        name: 'shell',
+        name: 'data-layer',
         filename: 'static/chunks/remoteEntry.js',
-        exposes: {},
+        exposes: {
+          './use-dl-get-names': './data/use-dl-get-names',
+          './fetch-names': './data/fetch-names',
+        },
         extraOptions: {},
-        remotes: getRemotes(options.isServer),
         shared: {
           'react-query': {
             singleton: true,
