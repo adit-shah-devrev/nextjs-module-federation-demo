@@ -14,7 +14,11 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@nextjs-module-federation-demo/name-context": [
+        "libs/name-context/src/index.ts"
+      ]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }

@@ -34,6 +34,10 @@ const nextConfig = {
           'react-query': {
             singleton: true,
           },
+          '@nextjs-module-federation-demo/name-context': {
+            singleton: true,
+            requiredVersion: false,
+          },
         },
       })
     );

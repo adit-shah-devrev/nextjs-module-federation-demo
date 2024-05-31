@@ -1,11 +1,14 @@
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 //@ts-ignore
 import { useDlGetNames } from 'data-layer/use-dl-get-names';
+import { useNameContext } from '@nextjs-module-federation-demo/name-context';
 
 export const Names = ({ name }) => {
   const { data, isLoading } = useDlGetNames();
+  const value = useNameContext();
   return (
     <div>
+      <div>{value}</div>
       {isLoading ? (
         <div>Loading...</div>
       ) : (

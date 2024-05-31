@@ -7,6 +7,7 @@ import { Names } from 'view-layer/names';
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 //@ts-ignore
 import { fetchNames } from 'data-layer/fetch-names';
+import { NameContext } from '@nextjs-module-federation-demo/name-context';
 
 export async function getServerSideProps() {
   await queryClient.prefetchQuery('names', fetchNames);
@@ -26,10 +27,12 @@ export function Index() {
    */
   return (
     <div>
-      <Names name="DevRev" />
-      <button onClick={() => queryClient.invalidateQueries(['names'])}>
-        Invalidate
-      </button>
+      <NameContext.Provider value="DevRev">
+        <Names />
+        <button onClick={() => queryClient.invalidateQueries(['names'])}>
+          Invalidate
+        </button>
+      </NameContext.Provider>
     </div>
   );
 }
