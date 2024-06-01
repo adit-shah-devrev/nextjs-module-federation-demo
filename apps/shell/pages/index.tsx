@@ -1,3 +1,4 @@
+import React from 'react';
 import { dehydrate } from 'react-query';
 import { queryClient } from '../utils/query-client';
 import styles from './index.module.scss';

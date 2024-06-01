@@ -38,6 +38,9 @@ const nextConfig = {
             singleton: true,
             requiredVersion: false,
           },
+          'react/jsx-runtime': {
+            requiredVersion: false,
+          },
         },
       })
     );

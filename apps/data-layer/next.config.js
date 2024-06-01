@@ -22,6 +22,7 @@ const nextConfig = {
         exposes: {
           './use-dl-get-names': './data/use-dl-get-names',
           './fetch-names': './data/fetch-names',
+          './name': './components/name',
         },
         extraOptions: {},
         shared: {
@@ -32,7 +33,11 @@ const nextConfig = {
             singleton: true,
             requiredVersion: false,
           },
+          'react/jsx-runtime': {
+            requiredVersion: false,
+          },
         },
+        remotes: {},
       })
     );
 
